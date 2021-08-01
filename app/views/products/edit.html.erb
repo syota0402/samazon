@@ -1,6 +1,6 @@
 <h1>Update Products</h1>
 
-<%= from_with model: @product do |f| %>
+<%= form_with model: @product do |f| %>
  <%= f.text_field :name %>
  <%= f.text_area :description %>
  <%= f.number_field :price %>
