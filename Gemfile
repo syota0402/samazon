@@ -40,7 +40,7 @@ gem 'devise'
 gem 'pry'
 
 # bootstrapを使用できる
-gem 'bootstrap'
+gem 'bootstrap', "4.6.0"
 gem 'jquery-rails'
 
 # 環境変数を使用できる
