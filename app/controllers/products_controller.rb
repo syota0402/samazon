@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :favorite]
-  PER = 15
   
   def index
-    @products = Product.page(params[:page]).per(PER)
+    @products = Product.display_list(category_params, params[:page])
+    @category = Category.request_category(category_params)
+    @categories = Category.all
+    @major_category_names = Category.major_categories
   end
 
   def show
@@ -48,5 +50,9 @@ class ProductsController < ApplicationController
     
     def set_product
       @product = Product.find(params[:id])
+    end
+    
+    def category_params
+      params[:category].present? ? params[:category] : "none"
     end
 end
