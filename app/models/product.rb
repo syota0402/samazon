@@ -3,6 +3,6 @@ class Product < ApplicationRecord
   has_many :reviews
   
   def reviews_new
-    review.new
+    reviews.new
   end
 end
