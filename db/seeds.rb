@@ -11,32 +11,44 @@ computer_categories = ["ノートPC","デスクトップPC","タブレット"]
 display_categories = ["19～20インチ","デスクトップPC","タブレット"]
 
 major_category_names.each do |major_category_name|
-    if major_category_name == "本"
-        book_categories.each do|book_category|
-            Category.create(
-                name: book_category,
-                description: book_category,
-                major_category_name: major_category_name
-            )
-        end
-    elsif major_category_name == "コンピュータ"
-        computer_categories.each do |computer_category|
-            Category.create(
-                name: computer_category,
-                description: computer_category,
-                major_category_name: major_category_name
-            )
-        end
-    elsif major_category_name == "ディスプレイ"
-        display_categories.each do |display_category|
-            Category.create(
-                name: display_category,
-                description: display_category,
-                major_category_name: major_category_name
-            )
-        end
-    end
+	if major_category_name == "本"
+		book_categories.each do|book_category|
+			Category.create(
+				name: book_category,
+				description: book_category,
+				major_category_name: major_category_name
+			)
+		end
+	elsif major_category_name == "コンピュータ"
+		computer_categories.each do |computer_category|
+			Category.create(
+				name: computer_category,
+				description: computer_category,
+				major_category_name: major_category_name
+			)
+		end
+	elsif major_category_name == "ディスプレイ"
+		display_categories.each do |display_category|
+			Category.create(
+				name: display_category,
+				description: display_category,
+				major_category_name: major_category_name
+			)
+		end
+	end
 end
-        
-            
-        
+		
+product_ids = [*1..30]
+category_ids = [*1..18,*1..12]
+array_number = 0
+
+product_ids.each do
+	product_name = Faker::Music::RockBand.name
+	Product.create(
+		name: product_name,
+		description: product_name,
+		price: product_ids[array_number],
+		category_id: category_ids[array_number]
+	)
+	array_number += 1
+end
