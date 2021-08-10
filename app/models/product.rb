@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   PER = 15
   
   scope :display_list, -> (page) { page(page).per(PER) }
+
   scope :on_category, -> (category) { where(category_id: category) }
   scope :sort_order, -> (order) { order(order) }
   
@@ -14,7 +15,7 @@ class Product < ApplicationRecord
   }
   
   scope :sort_products, -> (sort_order, page) {
-    on _category(sort_order[:sort_category]).
+    on_category(sort_order[:sort_category]).
     sort_order(sort_order[:sort]).
     display_list(page)
   }
