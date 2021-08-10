@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/edit'
-  get 'users/update'
-  get 'users/mypage'
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
@@ -16,6 +14,15 @@ Rails.application.routes.draw do
     get "verify", :to => "users/registrations#verify"
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
+  end
+  
+  resources :users, only: [:edit, :update] do
+    collection do
+      get "mypage", :to => "users#mypage"
+      get "mypage/edit", :to => "users#edit"
+      get "mypage/address/edit", :to => "users#edtit_address"
+      put "mypage", :to => "users#edit_address"
+    end
   end
   
   resources :products do
