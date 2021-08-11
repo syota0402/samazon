@@ -2,16 +2,16 @@
   <div class="w-50">
     
     <h1>マイページ</h1>
-    
+
     <hr>
-    
+
     <div class="container">
       <div class="d-flex justify-content-between">
         <div class="row">
           <div class="col-2 d-flex align-items-center">
             <i class="fas fa-user fa-3x"></i>
           </div>
-          <div class="col-9 d-flex align-item-center ml-2 mt-3">
+          <div class="col-9 d-flex align-items-center ml-2 mt-3">
             <div class="d-flex flex-column">
               <label for="user-name">会員情報の編集</label>
               <p>アカウント情報の編集</p>
@@ -25,11 +25,11 @@
         </div>
       </div>
     </div>
-    
+
     <hr>
-    
+
     <div class="container">
-      <div class="d-flex justify-content-betwen">
+      <div class="d-flex justify-content-between">
         <div class="row">
           <div class="col-2 d-flex align-items-center">
             <i class="fas fa-archive fa-3x"></i>
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    
+
     <hr>
     
     <div class="container">
@@ -73,7 +73,7 @@
     </div>
     
     <hr>
-    
+
     <div class="container">
       <div class="d-flex justify-content-between">
         <div class="row">
@@ -91,13 +91,13 @@
           <%= link_to logout_path, onclick: "event.preventDefault(); document.getElementById('logout-form').submit();" do %>
             <i class="fas fa-chevron-right fa-2x"></i>
           <% end %>
-          <%= form_with url: logout_path, style: "displsy: none;", method: "get", id: "logout-form" do %>
+          <%= form_with url: logout_path, style: "display: none;", method: "get", id: "logout-form" do %>
           <% end %>
         </div>
       </div>
     </div>
-    
+
     <hr>
-    
+
   </div>
 </div>

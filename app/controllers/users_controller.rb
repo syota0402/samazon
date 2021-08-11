@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  befoer_action :ser_user
+  before_action :set_user
   
   def edit
   end

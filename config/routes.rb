@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get "mypage", :to => "users#mypage"
       get "mypage/edit", :to => "users#edit"
       get "mypage/address/edit", :to => "users#edtit_address"
-      put "mypage", :to => "users#edit_address"
+      put "mypage", :to => "users#update"
     end
   end
   
