@@ -19,6 +19,9 @@ class ShoppingCartsController < ApplicationController
     redirect_to product_url(@product)
   end 
   
+  def updated
+  end 
+
   private
     def product_params
       params.permit(:product_id, :product, :price, :quantity)
