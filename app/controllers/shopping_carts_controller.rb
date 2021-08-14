@@ -21,7 +21,13 @@ class ShoppingCartsController < ApplicationController
   
   def updated
   end 
-
+  
+  def destroy
+    @user_cart.buy_flag = true
+    @user_cart.save
+    redirect_to cart_users_url
+  end
+  
   private
     def product_params
       params.permit(:product_id, :product, :price, :quantity)
