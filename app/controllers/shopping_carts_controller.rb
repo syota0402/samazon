@@ -27,7 +27,7 @@ class ShoppingCartsController < ApplicationController
     @user_cart.save
     redirect_to cart_users_url
   end
-
+  
   private
     def product_params
       params.permit(:product_id, :product, :price, :quantity)
