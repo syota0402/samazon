@@ -15,11 +15,11 @@ class ShoppingCartsController < ApplicationController
   
   def create
     @product = Product.find(product_params[:product_id])
-    @user_cart.add(@product, product_params[:price].to_i,  product_params[:quantity].to_i)
+    @user_cart.add(@product, product_params[:price].to_i, product_params[:quantity].to_i)
     redirect_to product_url(@product)
   end 
   
-  def updated
+  def update
   end 
   
   def destroy
