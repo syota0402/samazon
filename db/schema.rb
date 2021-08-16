@@ -82,12 +82,12 @@ ActiveRecord::Schema.define(version: 2021_08_14_073102) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shoppoing_carts", force: :cascade do |t|
+  create_table "shopping_carts", force: :cascade do |t|
     t.boolean "buy_flag", default: false, null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_shoppoing_carts_on_user_id"
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
