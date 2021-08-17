@@ -13,4 +13,9 @@ class WebController < ApplicationController
     @major_category_names = Category.major_categories
     @categories = Category.all
   end
+  
+  private
+    def sort_params
+      params.permit(:sort, :sort_category)
+    end
 end
