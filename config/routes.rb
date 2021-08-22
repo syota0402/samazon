@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     :sessions => 'admins/sessions'
   }
   
-  devise_scope :admins do 
+  devise_scope :admin do 
     get "dashboard", :to => "dashboard#index"
     get "dashboard/login", :to => "admins/sessions#new"
     post "dashboard/login", :to => "admins/sessions#create"
