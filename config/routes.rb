@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  get "dashboard", :to => "dashboard#index"
+  devise_for :admins, :controllers => {
+    :sessions => 'admins/sessions'
+  }
+  
+  devise_scope :admin do 
+    get "dashboard", :to => "dashboard#index"
+    get "dashboard/login", :to => "admins/sessions#new"
+    post "dashboard/login", :to => "admins/sessions#create"
+    get "dashboard/login", :to => "admins/sessions#destroy"
+  end
   
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
