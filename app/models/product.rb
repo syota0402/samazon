@@ -38,4 +38,10 @@ class Product < ApplicationRecord
       reviews.reviews_with_id
     end
   
+<<<<<<< HEAD
+=======
+  def reviews_new
+    reviews.new
+  end
+>>>>>>> df59727a03a4525b5fc2d12d454cc1ffe9d5b80e
 end
