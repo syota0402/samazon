@@ -2,7 +2,7 @@
 <%= form_with url: dashboard_products_path, method: :get, local: true, class: "form-inline" do |f| %>
     並び替え
   <% if @sorted.present? %>
-    <%= f.select :sort, @sort_list, {}, selected: @sorted, onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" %>
+    <%= f.select :sort, @sort_list, selected: @sorted, onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" %>
   <% else %>
     <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" %>
   <% end %>
@@ -25,7 +25,7 @@
 
     <%= link_to "+ 新規作成", new_dashboard_product_path, class: "btn samazon-submit-button" %>
   </div>
-  <table class="table fixed-table mt-5">
+  <table class="table table-responsive mt-5">
 
     <thead>
       <tr>
@@ -44,11 +44,10 @@
       <tr>
         <th scope="row"><%= product.id %></td>
         <td><%= image_tag "/images/dummy.png", class: "img-fluid h-10" %></td>
-          <% if product.image.attached? %>
-            <%= image_tag product.image, class: "h-10 img-fluid", width: "60px" %>
-          <% else %>
-            <%= image_tag "/images/dummy.png", class: "h-10 img-fluid", width: "60px" %>
-          <% end %>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category.name %></td>
+        <td><%= product.category.major_category_name %></td>
         <td>
           <%= link_to "編集", edit_dashboard_product_path(product), class: "dashboard-edit-link" %>
         </td>
