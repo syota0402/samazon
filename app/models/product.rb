@@ -38,4 +38,7 @@ class Product < ApplicationRecord
       reviews.reviews_with_id
     end
   
+    def reviews_new
+      reviews.new
+    end
 end

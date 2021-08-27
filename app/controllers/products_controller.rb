@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :favorite]
   
   def index
+<<<<<<< HEAD
     if sort_params.present?
       @category = Category.request_category(sort_params[:sort_category])
       @products = Product.sort_products(sort_params, params[:page])
@@ -12,6 +13,28 @@ class ProductsController < ApplicationController
       @products = Product.display_list(params[:page])
     end
     
+=======
+    @products = Product.all
+  end
+
+  def show
+    @reviews = @product.reviews
+    @review = @reviews.new
+  end
+
+  def new
+    @product = Product.new
+    @categories = Category.all
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.save
+    redirect_to product_url @product
+  end
+
+  def edit
+>>>>>>> df59727a03a4525b5fc2d12d454cc1ffe9d5b80e
     @categories = Category.all
     @major_category_names = Category.major_categories
     @sort_list = Product.sort_list
