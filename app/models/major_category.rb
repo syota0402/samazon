@@ -1,0 +1,2 @@
+class MajorCategory < ApplicationRecord
+end
