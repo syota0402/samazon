@@ -1,4 +1,4 @@
 class MajorCategory < ApplicationRecord
-  has_mant :categories
+  has_many :categories
   extend DisplayList
 end
