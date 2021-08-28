@@ -1,18 +1,13 @@
 class User < ApplicationRecord
+  has_many :reviews
+  extend DisplayList
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   acts_as_liker
   
-  def update_passward(params, *options)
-    if params[:password].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation) if params[:password_confirmation].blank?
-    end
-    
-    result = update(params, *options)
-    clean_up_passwords
-    result
-  end
+  scope :search_information, -> (keyword) {
+    where("name LIKE :keyword OR id LIKE :keyword OR email LIKE :keyword OR address LIKE :keyword OR postal_code LIKE :keyword OR phone LIKE :keyword", keyword: "%w{keyword}%")
+  }
 end
