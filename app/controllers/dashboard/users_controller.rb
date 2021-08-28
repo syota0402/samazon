@@ -3,7 +3,13 @@ class Dashboard::UsersController < ApplicationController
   layout "dashboard/dashboard"
   
   def index
-    @usrs = User.display_list(params[:pages])
+    if params[:keyword].present?
+      @keyword = params[:keyword].strip
+      @users = User.search_information(@keyword).display_list(params[:pages])
+    else
+      @keyword = ""
+      @users = User.display_list(params[:pages])
+    end
   end
   
   def destroy

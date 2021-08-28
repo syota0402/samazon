@@ -2,6 +2,18 @@
   
   <h1>顧客一覧</h1>
   
+  <div class="w-75">
+    <%= form_with url: dashboard_users_path, method: :get, local: true do |f| %>
+      <div class="d-flex flex-inline form-group">
+        <div class="d-flex align-items-center">
+          ID・指名など
+        </div>
+        <%= f.text_area :keyword, value: @keyword, class: "form-controll ml-2 w-50" %>
+      </div>
+      <%= f.submit "検索", class: "btn samazon-submit-button" %>
+    <% end %>
+  </div>
+  
   <table class="table mt-5">
     <thead>
       <tr>
@@ -13,12 +25,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @user.each do |user| %>
+      <% @users.each do |user| %>
       <tr>
-        <td scope="row"><%= usr.id %></td>
-        <td><%= user.name %></td>
-        <tb><%= user.email %></tb>
-        <tb><%= user.phone %></tb>
+        <th scope="row"><%= user.id %></th>
+        <th><%= user.name %></th>
+        <th><%= user.email %></th>
+        <th><%= user.phone %></th>
       </tr>
       <% end %>
     </tbody>
