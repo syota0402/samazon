@@ -4,8 +4,7 @@
   <%= form_with(model: @category, url: dashboard_category_path(@category), local: true) do |f| %>
     <div class="form-group">
       <%= f.label :name, "カテゴリ名" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
+      <%= f.select :major_category_id, @major_categories.map { |mc| [mc.name, mc.id] }, {}, class: "form-control" %>
 
     <div class="form-group">
       <%= f.label :description, "カテゴリの説明" %>
