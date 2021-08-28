@@ -2,18 +2,6 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :favorite]
   
   def index
-<<<<<<< HEAD
-    if sort_params.present?
-      @category = Category.request_category(sort_params[:sort_category])
-      @products = Product.sort_products(sort_params, params[:page])
-    elsif params[:category].present?
-      @category = Category.request_category(params[:category])
-      @products = Product.category_products(@category, params[:page])
-    else
-      @products = Product.display_list(params[:page])
-    end
-    
-=======
     @products = Product.all
   end
 
@@ -34,7 +22,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
->>>>>>> df59727a03a4525b5fc2d12d454cc1ffe9d5b80e
     @categories = Category.all
     @major_category_names = Category.major_categories
     @sort_list = Product.sort_list
