@@ -50,7 +50,6 @@
 		</div>
 		
 		<div class="offset-1 col-10">
-<<<<<<< HEAD
      	<div class="row">
        	<% @reviews.each do |review| %>
        	<div class="offset-md-5 col-md-5">
@@ -75,27 +74,6 @@
         </div>
       </div>
     	<% end %>
-=======
-			<div class="row">
-				<% @reviews.each do |review| %>
-				<div class="offset-md-5 col-md-5">
-					<p class="h3"><%= review.content %></p>
-					<label><% review.created_at %></label>
-				</div>
-				<% end %>
-			</div>
-			
-			<% if user_signed_in? %>
-				<div class="row">
-					<div class="offset-md-5 col-md-5">
-						<%= form_with model: @review, url: product_reviews_path(@product) do |f| %>
-							<%= f.text_area :content, class: "form-content m-2" %>
-							<%= f.submit "レビューを追加", class: "btn samazon-submit-button ml-2" %>
-						<% end %>
-					</div>
-				</div>
-			<% end %>
->>>>>>> df59727a03a4525b5fc2d12d454cc1ffe9d5b80e
 		</div>
 	</div>
 </div>
