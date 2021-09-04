@@ -5,9 +5,9 @@ class ShoppingCart < ApplicationRecord
                             user_cart.nil? ? ShoppingCart.create(user_id: user.id)
                                              : user_cart }
   scope :bought_cart_ids, -> { where(buy_flag: true).pluck(:id) }
-  # scope :sort_list, -> {
-  #   {"日別": "daily", "月別": "month"}
-  # }
+  scope :sort_list, -> {
+    {"日別": "daily", "月別": "month"}
+  }
   
   CARRIAGE=800
   FREE_SHIPPING=0
