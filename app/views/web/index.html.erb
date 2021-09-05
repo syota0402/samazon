@@ -8,7 +8,11 @@
         <% @recommended_products.each do |recommended_product| %>
         <div class="col-4">
           <%= link_to product_path(recommended_product) do %>
-            <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+            <% if recommended_product.image.attached? %>
+              <%= image_tag recommended_product.image, class: "img-thumbnail" %>
+            <% else %>
+              <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+            <% end %>
           <% end %>
           <div class="row">
             <div class="col-12">
@@ -28,7 +32,11 @@
       <% @recently_products.each do |recently_product| %>
       <div class="col-3">
         <%= link_to product_path(recently_product) do %>
-          <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+          <% if recently_product.image.attached? %>
+            <%= image_tag recently_product.image, class: "img-thumbnail" %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+          <% end %>
         <% end %>
         <div class="row">
           <div class="col-12">

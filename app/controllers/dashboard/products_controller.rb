@@ -28,6 +28,7 @@ class Dashboard::ProductsController < ApplicationController
 
   def new
     @categories = Category.all
+    @product = Product.new
   end
 
   def create
@@ -56,6 +57,6 @@ class Dashboard::ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :recommended_flag, :carriage_flag, :category_id)
+      params.require(:product).permit(:name, :description, :price, :recommended_flag, :carriage_flag, :category_id, :image)
     end
 end
