@@ -8,10 +8,12 @@ class Dashboard::OrdersController < ApplicationController
     
     @orders = []
     @orders_array = []
+    
     if @code.present?
       @orders = ShoppingCart.get_orders({code: @code})
       @orders_array = Kaminari.paginate_array(@orders.to_a).page(params[:page]).per(15)
     else
+      @orders = ShoppingCart.get_orders({code: @code})
       @orders_array = ShoppingCart.all.page(params[:page]).per(15)
     end
     @total = @orders_array.count
