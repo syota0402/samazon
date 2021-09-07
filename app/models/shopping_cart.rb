@@ -25,10 +25,12 @@ class ShoppingCart < ApplicationRecord
         hash[b.updated_at.strftime("%Y-%m")][:quantity_daily] = b.quantity
       end
       if hash[b.updated_at.strftime("%Y-%m")][:price_daily].present?
+        hash[b.updated_at.strftime("%Y-%m")][:billing_date] = b.updated_at.strftime("%Y-%m")
         hash[b.updated_at.strftime("%Y-%m")][:price_daily] = hash[b.updated_at.strftime("%Y-%m")][:price_daily] + b.price_cents
         hash[b.updated_at.strftime("%Y-%m")][:quantity_daily] = hash[b.updated_at.strftime("%Y-%m")][:quantity_daily] + b.quantity
         hash[b.updated_at.strftime("%Y-%m")][:price_average_daily] = hash[b.updated_at.strftime("%Y-%m")][:price_average_daily] + b.price_cents
       else
+        hash[b.updated_at.strftime("%Y-%m")][:billing_date] = b.updated_at.strftime("%Y-%m")
         hash[b.updated_at.strftime("%Y-%m")][:price_daily] = b.price_cents
         hash[b.updated_at.strftime("%Y-%m")][:quantity_daily] = b.quantity
         hash[b.updated_at.strftime("%Y-%m")][:price_average_daily] = b.price_cents
@@ -51,10 +53,12 @@ class ShoppingCart < ApplicationRecord
         hash[b.updated_at.to_date.to_s][:quantity_daily] = b.quantity
       end
       if hash[b.updated_at.to_date.to_s][:price_daily].present?
+        hash[b.updated_at.to_date.to_s][:billing_date] = b.updated_at.to_date.to_s
         hash[b.updated_at.to_date.to_s][:price_daily] = hash[b.updated_at.to_date.to_s][:price_daily] + b.price_cents
         hash[b.updated_at.to_date.to_s][:quantity_daily] = hash[b.updated_at.to_date.to_s][:quantity_daily] + b.quantity
         hash[b.updated_at.to_date.to_s][:price_average_daily] = hash[b.updated_at.to_date.to_s][:price_daily].to_f / hash[b.updated_at.to_date.to_s][:quantity_daily]
       else
+        hash[b.updated_at.to_date.to_s][:billing_date] = b.updated_at.to_date.to_s
         hash[b.updated_at.to_date.to_s][:price_daily] = b.price_cents
         hash[b.updated_at.to_date.to_s][:quantity_daily] = b.quantity
         hash[b.updated_at.to_date.to_s][:price_average_daily] = b.price_cents.to_f / hash[b.updated_at.to_date.to_s][:quantity_daily]

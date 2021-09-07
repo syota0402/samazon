@@ -10,7 +10,6 @@ class DashboardController < ApplicationController
                 else
                   ShoppingCart.get_daily_billings
                 end
-                
     @total = ShoppingCart.bought_cart_ids.count
     @sort_list = ShoppingCart.sort_list
   end
