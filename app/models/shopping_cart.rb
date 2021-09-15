@@ -112,7 +112,7 @@ class ShoppingCart < ApplicationRecord
   def cart_contents
     bought_cart_items = ShoppingCartItem.user_cart_items(self.id)
     product_contents_list = Product.where(id: bought_cart_items.ids)
-    
+
     hash = Hash.new { |h,k| h[k] = {} }
     bought_cart_items.each do |bought_cart_item|
       hash[bought_cart_item.id][:image] = product_contents_list[bought_cart_item.id].nil? ? product_contents_list.first.image : product_contents_list[bought_cart_item.id][:image]
@@ -120,11 +120,17 @@ class ShoppingCart < ApplicationRecord
       hash[bought_cart_item.id][:quantity] = bought_cart_item.quantity
       hash[bought_cart_item.id][:price] = bought_cart_item.price_cents
       if product_contents_list[bought_cart_item.id].nil?
-        hash[bought_cart_item.id][:shipping_cost] = product_contents_list.first.carriage_flag ? 800 * hash[bought_cart_item.id][:quantity] : 0
-      else
-        hash[bought_cart_item.id][:shipping_cost] = product_contents_list[bought_cart_item.id][:carriage_flag] ? 800 * hash[bought_cart_item.id][:quantity] : 0 
+      hash[bought_cart_item.id][:shipping_cost] = product_contents_list.first.carriage_flag ? 
+                                                                800 * hash[bought_cart_item.id][:quantity]
+                                                                : 0
+      else 
+      hash[bought_cart_item.id][:shipping_cost] = product_contents_list[bought_cart_item.id][:carriage_flag] ?
+                                                                800 * hash[bought_cart_item.id][:quantity]
+                                                                : 0
       end
-      hash[bought_cart_item.id][:product_total_price] = hash[bought_cart_item.id][:shipping_cost] + (hash[bought_cart_item.id][:quantity] * hash[bought_cart_item.id][:price])
+      hash[bought_cart_item.id][:product_total_price] = hash[bought_cart_item.id][:shipping_cost] +
+                                                        (hash[bought_cart_item.id][:quantity] *
+                                                        hash[bought_cart_item.id][:price])
       return hash
     end
   end
