@@ -120,19 +120,15 @@ class ShoppingCart < ApplicationRecord
       hash[bought_cart_item.id][:quantity] = bought_cart_item.quantity
       hash[bought_cart_item.id][:price] = bought_cart_item.price_cents
       if product_contents_list[bought_cart_item.id].nil?
-      hash[bought_cart_item.id][:shipping_cost] = product_contents_list.first.carriage_flag ? 
-                                                                800 * hash[bought_cart_item.id][:quantity]
-                                                                : 0
+        hash[bought_cart_item.id][:shipping_cost] = product_contents_list.first.carriage_flag ? 800 * hash[bought_cart_item.id][:quantity]: 0
       else 
-      hash[bought_cart_item.id][:shipping_cost] = product_contents_list[bought_cart_item.id][:carriage_flag] ?
-                                                                800 * hash[bought_cart_item.id][:quantity]
-                                                                : 0
+        hash[bought_cart_item.id][:shipping_cost] = product_contents_list[bought_cart_item.id][:carriage_flag] ? 800 * hash[bought_cart_item.id][:quantity]: 0
       end
-      hash[bought_cart_item.id][:product_total_price] = hash[bought_cart_item.id][:shipping_cost] +
-                                                        (hash[bought_cart_item.id][:quantity] *
-                                                        hash[bought_cart_item.id][:price])
-      return hash
+      
+      hash[bought_cart_item.id][:product_total_price] = hash[bought_cart_item.id][:shipping_cost] + (hash[bought_cart_item.id][:quantity] * hash[bought_cart_item.id][:price])
     end
+    
+    return hash
   end
   
   def tax_pct
